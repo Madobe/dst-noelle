@@ -1,6 +1,6 @@
 -- This information tells other players more about the mod
 name = "Genshin Impact - Noelle"
-description = "A maid who faithfully serves the Knights of Favonius. She dreams of joining their ranks someday."
+description = "A maid who faithfully serves the Knights of Favonius. She dreams of joining their ranks someday. \n\n[Perks]\nArmored Rose: Innate 30% physical damage reduction. \n\nGeo Vision: Starts with a protective trinket. Right-click to cast a 300 HP shield that lasts 12s, 24s cooldown. While the shield is up, 55% chance to heal 10% of own health on attacking. Every 4th attack she inflicts while the shield is on cooldown will reduce it by 1s. While the shield is up, Noelle is protected from the special effects of enemy attacks."
 author = "Nanamin, サイ"
 version = "1.2.6" -- This is the version of the template. Change it to your own number.
 
