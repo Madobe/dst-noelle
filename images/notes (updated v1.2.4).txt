@@ -8,17 +8,17 @@ This is in order to get the name to show up in the character select screen. If y
 
 Example:
 <Atlas>
-	<Texture filename="names_esctemplate.tex" />
+	<Texture filename="names_noelle.tex" />
 	<Elements>
-		<Element name="esctemplate.tex" u1="0.00048828125" u2="0.85498046875" v1="0.1533203125" v2="0.9990234375" />
+		<Element name="noelle.tex" u1="0.00048828125" u2="0.85498046875" v1="0.1533203125" v2="0.9990234375" />
 	</Elements>
 </Atlas>
 
 
 
 <Atlas>
-	<Texture filename="names_gold_esctemplate.tex" />
+	<Texture filename="names_gold_noelle.tex" />
 	<Elements>
-		<Element name="esctemplate.tex" u1="0.00048828125" u2="0.85498046875" v1="0.1533203125" v2="0.9990234375" />
+		<Element name="noelle.tex" u1="0.00048828125" u2="0.85498046875" v1="0.1533203125" v2="0.9990234375" />
 	</Elements>
 </Atlas>

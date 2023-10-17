@@ -1,22 +1,22 @@
 local assets =
 {
-	Asset( "ANIM", "anim/esctemplate.zip" ),
-	Asset( "ANIM", "anim/ghost_esctemplate_build.zip" ),
+	Asset( "ANIM", "anim/noelle.zip" ),
+	Asset( "ANIM", "anim/ghost_noelle_build.zip" ),
 }
 
 local skins =
 {
-	normal_skin = "esctemplate",
-	ghost_skin = "ghost_esctemplate_build",
+	normal_skin = "noelle",
+	ghost_skin = "ghost_noelle_build",
 }
 
-return CreatePrefabSkin("esctemplate_none",
+return CreatePrefabSkin("noelle_none",
 {
-	base_prefab = "esctemplate",
+	base_prefab = "noelle",
 	type = "base",
 	assets = assets,
 	skins = skins, 
-	skin_tags = {"ESCTEMPLATE", "CHARACTER", "BASE"},
-	build_name_override = "esctemplate",
+	skin_tags = {"noelle", "CHARACTER", "BASE"},
+	build_name_override = "noelle",
 	rarity = "Character",
 })
