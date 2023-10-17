@@ -11,7 +11,7 @@
 ## General Notes
 
 * Innate 30% Physical damage reduction (or 50%, but a bit overpowered?). No Planar damage reduction (a new damage type in the game, quite easy to find in the code though, prolly).
-* Portrait notes: Her gacha splash art but DST-fied with the Favonius Claymore replaced with a hambat or shovel or something. 
+* Portrait notes: Her gacha splash art but DST-fied with the Favonius Claymore replaced with a hambat or shovel or something.
 
 ## Noelle's Vision
 * Starts with a protective trinket. Right-click to cast a 300 HP shield that lasts 12s, 24s cooldown. While the shield is up, 55% chance to heal 10% of own health on attacking. Every 4th attack she inflicts while the shield is on cooldown will reduce it by 1s. While the shield is up, Noelle is protected from the special effects of enemy attacks, such as those of Frogs (like a Thulecite Crown).
