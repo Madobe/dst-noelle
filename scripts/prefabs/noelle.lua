@@ -4,6 +4,10 @@ local assets = {
 	Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
 }
 
+---------------------------------------------------------------------------------------------------
+-- Configurations
+---------------------------------------------------------------------------------------------------
+
 -- Your character's stats
 TUNING.NOELLE_HEALTH = 150
 TUNING.NOELLE_HUNGER = 150
@@ -61,25 +65,53 @@ local function onload ( inst )
 end
 
 ---------------------------------------------------------------------------------------------------
+-- Overloads
+---------------------------------------------------------------------------------------------------
+
+--- Fires when the character is attacked.
+-- This adjusts the original incoming damage before armor calculations, then calls the original
+-- function.
+-- @param attacker table: The entity attacking the character.
+-- @param damage int: The initial amount of damage being inflicted.
+-- @param weapon table: The weapon the attack is being performed with.
+-- @param stimuli str: The type of damage that the attack is inflicting.
+-- @param spdamage int: The amount of special damage being inflicted.
+local function GetAttacked ( self, attacker, damage, weapon, stimuli, spdamage )
+	if attacker ~= nil and attacker.components.planarentity ~= nil then
+		damage = damage * 0.7 -- 30% resistance
+	end
+
+	self.inst.components.combat:GetAttackedParent( attacker, damage, weapon, stimuli, spdamage )
+end
+
+---------------------------------------------------------------------------------------------------
 -- Required functions
 ---------------------------------------------------------------------------------------------------
 
 --- Client and server-side post-initialization.
--- This sets anything that needs to be on the client side only. For example, a minimap icon is not
--- important to the server, but a client needs it. This is despite the fact that the server runs any
--- code included here as well.
+-- The following should occur here:
+-- * Tags additions
+-- * Animation state overrides
+-- * Internal function overrides
+-- @see prefabs/world.lua
 -- @param inst table: An object representing the current player.
 local common_postinit = function ( inst )
 	-- Minimap icon
 	inst.MiniMapEntity:SetIcon( "noelle.tex" )
+
+	-- Custom tags
+	inst:AddTag( "genshin" )
 end
 
--- This initializes for the server only. Components are added here.
 --- Server-side post-initialization.
--- This sets anything that needs to be synchronized with the server. This includes initial
--- inventories and the character's max values.
+-- The following should occur here:
+-- * Component additions (and any settings related to the additions)
+-- * Max stat settings
+-- * Favorite foods
+-- @see prefabs/world.lua
 -- @param inst table: An object representing the current player.
 local master_postinit = function ( inst )
+	-- Basic changes
 	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
 	inst.soundsname = "willow"
 
@@ -92,6 +124,10 @@ local master_postinit = function ( inst )
 
 	inst.OnLoad = onload
 	inst.OnNewSpawn = onload
+
+	-- Hook up a decorated version of Combat:GetAttacked so we block 30% physical
+	inst.components.combat:GetAttackedParent = inst.components.combat.GetAttacked
+	inst.components.combat:GetAttacked = GetAttacked
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )
