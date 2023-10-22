@@ -126,8 +126,7 @@ local master_postinit = function ( inst )
 	inst.OnNewSpawn = onload
 
 	-- Hook up a decorated version of Combat:GetAttacked so we block 30% physical
-	inst.components.combat:GetAttackedParent = inst.components.combat.GetAttacked
-	inst.components.combat:GetAttacked = GetAttacked
+	inst.components.combat.GetAttackedParent, inst.components.combat.GetAttacked = inst.components.combat.GetAttacked, GetAttacked
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )

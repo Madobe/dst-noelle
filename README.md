@@ -20,4 +20,4 @@
 
 ## Potential Additions
 * ~~If examined by a character that does not have an examine line for the vision, default to examination quote for Moon Rock~~
-* ~~Burst: Use the vision on a weapon when it has accumulated 100% charges to cast her burst, making the wielded weapon glow yellow and providing a 50% damage bonus based on the total amount of damage reduction she currently has (100% total damage reduction means 50% more damage). Lasts 15s, 15s cooldown. Vision accumulates 5-10% charges when enemies are defeated within visible vision range (huehuehue). (unlikely addition, but a bonus idea, seems complicated and i am against it)~~
+* ~~Burst: Use the vision on a weapon when it has accumulated 100% charges to cast her burst, making the wielded weapon glow yellow and providing a 50% damage bonus based on the total amount of damage reduction she currently has (100% total damage reduction means 50% more damage). Lasts 15s, 15s cooldown. Vision accumulates 5-10% charges when enemies are defeated within visible vision range (huehuehue).~~ (unlikely addition, but a bonus idea, seems complicated and i am against it)
