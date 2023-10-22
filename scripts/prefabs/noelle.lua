@@ -47,6 +47,23 @@ local function onbecameghost ( inst )
 	inst.components.locomotor:RemoveExternalSpeedMultiplier( inst, "noelle_speed_mod" )
 end
 
+--- Handles when a player moves.
+-- This is used to update which animation bank will be used, so that we can have asymmetrical
+-- character designs.
+-- @param inst table: An object representing the current player.
+local function onlocomote ( inst )
+	if inst:HasTag( "playerghost" ) then 
+		return 
+	end
+
+	-- Left = 2; right = 0
+	if inst.AnimState:GetCurrentFacing() == 2 then 
+		inst.AnimState:SetBuild( "noelle-1" )
+	elseif inst.AnimState:GetCurrentFacing() == 0 then 
+		inst.AnimState:SetBuild( "noelle" )
+	end
+end
+
 --- Hooks up any callbacks that need to be hooked up.
 -- This code runs whenever a character is loaded (already existed) or spawns (new character). Note
 -- that due to how Lua works, all callbacks that will be used in this function must be defined 
@@ -63,23 +80,6 @@ local function onload ( inst )
 		onbecameghost( inst )
 	else
 		onbecamehuman( inst )
-	end
-end
-
---- Handles when a player moves.
--- This is used to update which animation bank will be used, so that we can have asymmetrical
--- character designs.
--- @param inst table: An object representing the current player.
-local function onlocomote ( inst )
-	if inst:HasTag( "playerghost" ) then 
-		return 
-	end
-
-	-- Left = 2; right = 0
-	if inst.AnimState:GetCurrentFacing() == 2 then 
-		inst.AnimState:SetBuild( "noelle-1" )
-	elseif inst.AnimState:GetCurrentFacing() == 0 then 
-		inst.AnimState:SetBuild( "noelle" )
 	end
 end
 
