@@ -43,13 +43,13 @@ configuration_options = {
   },
   {
     default = 1.0,
-    hover = "Affects the rate of sanity and hunger drain for this character"
+    hover = "Affects the rate of sanity and hunger drain for this character",
     label = "Difficulty",
     name = "difficulty_multiplier",
     options = {
       { description = "Casual", data = 0.5, hover = "50% less sanity and hunger drain" },
       { description = "Default", data = 1.0, hover = "Normal sanity and hunger drain" },
       { description = "Hardcore", data = 1.5, hover = "50% more sanity and hunger drain" }
-    },
+    }
   }
 }
