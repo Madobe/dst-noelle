@@ -64,27 +64,6 @@ local function onload ( inst )
 end
 
 ---------------------------------------------------------------------------------------------------
--- Overloads
----------------------------------------------------------------------------------------------------
-
---- Fires when the character is attacked.
--- This adjusts the original incoming damage before armor calculations, then calls the original
--- function. Doing it this way future-proofs the mod to some degree as we're not dependent on its
--- implementation despite using it.
--- @param attacker table: The entity attacking the character.
--- @param damage int: The initial amount of damage being inflicted.
--- @param weapon table: The weapon the attack is being performed with.
--- @param stimuli str: The type of damage that the attack is inflicting.
--- @param spdamage int: The amount of special damage being inflicted.
-local function GetAttacked ( self, attacker, damage, weapon, stimuli, spdamage )
-	if attacker ~= nil and attacker.components.planarentity ~= nil then
-		damage = damage * 0.7 -- 30% resistance
-	end
-
-	self.inst.components.combat:GetAttackedParent( attacker, damage, weapon, stimuli, spdamage )
-end
-
----------------------------------------------------------------------------------------------------
 -- Required functions
 ---------------------------------------------------------------------------------------------------
 
@@ -125,9 +104,8 @@ local master_postinit = function ( inst )
 	inst.OnLoad = onload
 	inst.OnNewSpawn = onload
 
-	-- Hook up a decorated version of Combat:GetAttacked so we block 30% physical
 	if TUNING.NOELLE.ARMORED_ROSE then
-		inst.components.combat.GetAttackedParent, inst.components.combat.GetAttacked = inst.components.combat.GetAttacked, GetAttacked
+		inst.components.combat.externaldamagetakenmultipliers:SetModifier( "armored_rose", 0.7 )
 	end
 end
 
