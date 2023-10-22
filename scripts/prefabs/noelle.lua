@@ -69,7 +69,8 @@ end
 
 --- Fires when the character is attacked.
 -- This adjusts the original incoming damage before armor calculations, then calls the original
--- function.
+-- function. Doing it this way future-proofs the mod to some degree as we're not dependent on its
+-- implementation despite using it.
 -- @param attacker table: The entity attacking the character.
 -- @param damage int: The initial amount of damage being inflicted.
 -- @param weapon table: The weapon the attack is being performed with.
@@ -125,7 +126,9 @@ local master_postinit = function ( inst )
 	inst.OnNewSpawn = onload
 
 	-- Hook up a decorated version of Combat:GetAttacked so we block 30% physical
-	inst.components.combat.GetAttackedParent, inst.components.combat.GetAttacked = inst.components.combat.GetAttacked, GetAttacked
+	if GetModConfigData( "damage_reduction_enabled" ) then
+		inst.components.combat.GetAttackedParent, inst.components.combat.GetAttacked = inst.components.combat.GetAttacked, GetAttacked
+	end
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )
