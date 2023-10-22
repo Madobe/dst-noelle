@@ -126,7 +126,7 @@ local master_postinit = function ( inst )
 	inst.OnNewSpawn = onload
 
 	-- Hook up a decorated version of Combat:GetAttacked so we block 30% physical
-	if GetModConfigData( "damage_reduction_enabled" ) then
+	if TUNING.NOELLE.ARMORED_ROSE then
 		inst.components.combat.GetAttackedParent, inst.components.combat.GetAttacked = inst.components.combat.GetAttacked, GetAttacked
 	end
 end

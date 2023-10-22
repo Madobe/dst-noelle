@@ -74,5 +74,10 @@ local skin_modes = {
     },
 }
 
+-- Technically a possible collision point if somebody uses the exact same tuning namespace
+GLOBAL.TUNING.NOELLE = {
+    ARMORED_ROSE = GetModConfigData( "enable_damage_reduction" )
+}
+
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter( "noelle", "FEMALE", skin_modes )
