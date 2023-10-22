@@ -33,7 +33,7 @@ server_filter_tags = {
 configuration_options = {
   {
     default = true,
-    hover = "Whether or not the 30% physical damage reduction is enabled"
+    hover = "Whether or not the 30% physical damage reduction is enabled",
     label = "Enable Armored Rose",
     name = "damage_reduction_enabled",
     options = {
