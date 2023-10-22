@@ -33,12 +33,23 @@ server_filter_tags = {
 configuration_options = {
   {
     default = true,
-    hover = "Whether or not the 30% physical damage reduction is enabled",
-    label = "Enable Armored Rose",
+    hover = "30% passive damage reduction",
+    label = "Armored Rose",
     name = "damage_reduction_enabled",
     options = {
-      { description = "Yes", data = true },
-      { description = "No", data = false }
+      { description = "Enable", data = true },
+      { description = "Disable", data = false }
     }
+  },
+  {
+    default = 1.0,
+    hover = "Affects the rate of sanity and hunger drain for this character"
+    label = "Difficulty",
+    name = "difficulty_multiplier",
+    options = {
+      { description = "Casual", data = 0.5, hover = "50% less sanity and hunger drain" },
+      { description = "Default", data = 1.0, hover = "Normal sanity and hunger drain" },
+      { description = "Hardcore", data = 1.5, hover = "50% more sanity and hunger drain" }
+    },
   }
 }

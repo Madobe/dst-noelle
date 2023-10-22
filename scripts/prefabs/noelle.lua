@@ -1,6 +1,8 @@
 local MakePlayerCharacter = require "prefabs/player_common"
 
 local assets = {
+	Asset( "ANIM", "anim/noelle.zip" ),
+	Asset( "ANIM", "anim/noelle-1.zip" ),
 	Asset( "SCRIPT", "scripts/prefabs/player_common.lua" ),
 }
 
@@ -54,12 +56,30 @@ local function onload ( inst )
 	-- Hook up any events to their callbacks
 	inst:ListenForEvent( "ms_respawnedfromghost", onbecamehuman )
 	inst:ListenForEvent( "ms_becameghost", onbecameghost )
+	inst:ListenForEvent( "locomote", onlocomote )
 
 	-- Resolve any necessary callbacks now, as their events won't fire on initial loading
 	if inst:HasTag( "playerghost" ) then
 		onbecameghost( inst )
 	else
 		onbecamehuman( inst )
+	end
+end
+
+--- Handles when a player moves.
+-- This is used to update which animation bank will be used, so that we can have asymmetrical
+-- character designs.
+-- @param inst table: An object representing the current player.
+local function onlocomote ( inst )
+	if inst:HasTag( "playerghost" ) then 
+		return 
+	end
+
+	-- Left = 2; right = 0
+	if inst.AnimState:GetCurrentFacing() == 2 then 
+		inst.AnimState:SetBuild( "noelle-1" )
+	elseif inst.AnimState:GetCurrentFacing() == 0 then 
+		inst.AnimState:SetBuild( "noelle" )
 	end
 end
 
@@ -99,7 +119,10 @@ local master_postinit = function ( inst )
 	inst.components.sanity:SetMax( TUNING.NOELLE_SANITY )
 
 	inst.components.combat.damagemultiplier = 1
-	inst.components.hunger.hungerrate = 1 * TUNING.WILSON_HUNGER_RATE
+
+  -- Difficulty
+  inst.components.hunger.hungerrate = TUNING.WILSON_HUNGER_RATE * TUNING.NOELLE.DIFFICULTY_MULTIPLIER
+  inst.components.sanity.neg_aura_mult = TUNING.NOELLE.DIFFICULTY_MULTIPLIER
 
 	inst.OnLoad = onload
 	inst.OnNewSpawn = onload

@@ -36,11 +36,11 @@ Assets = {
     Asset( "ATLAS", "images/names_gold_noelle.xml" ),
 
     -- Geo vision assets
-    -- ASSET( "ANIM", "anim/geo_vision.zip" ),
-    -- ASSET( "ANIM", "anim/swap_geo_vision.zip" ),
+    -- ASSET( "ANIM", "anim/noelle_vision.zip" ),
+    -- ASSET( "ANIM", "anim/swap_noelle_vision.zip" ),
 
-    -- ASSET( "IMAGE", "images/inventoryimages/geo_vision.tex" ),
-    -- Asset( "ATLAS", "images/inventoryimages/geo_vision.xml" )
+    -- ASSET( "IMAGE", "images/inventoryimages/noelle_vision.tex" ),
+    -- Asset( "ATLAS", "images/inventoryimages/noelle_vision.xml" )
 }
 
 AddMinimapAtlas( "images/map_icons/noelle.xml" )
@@ -76,7 +76,8 @@ local skin_modes = {
 
 -- Technically a possible collision point if somebody uses the exact same tuning namespace
 GLOBAL.TUNING.NOELLE = {
-    ARMORED_ROSE = GetModConfigData( "damage_reduction_enabled" )
+    ARMORED_ROSE = GetModConfigData( "damage_reduction_enabled" ),
+    DIFFICULTY_MULTIPLIER = GetModConfigData( "difficulty_multiplier" )
 }
 
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
