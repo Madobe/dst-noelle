@@ -18,8 +18,7 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.noelle = {
 	"flint",
 	"flint",
 	"twigs",
-	"twigs",
-	"geo_vision"
+	"twigs"
 }
 
 local start_inv = {}
