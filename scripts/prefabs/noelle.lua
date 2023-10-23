@@ -59,7 +59,7 @@ local function onlocomote ( inst )
 	-- Left = 2; right = 0
 	if inst.AnimState:GetCurrentFacing() == 2 then 
 		inst.AnimState:SetBuild( "noelle-1" )
-	elseif inst.AnimState:GetCurrentFacing() == 0 then 
+	elseif inst.AnimState:GetCurrentFacing() ~= 2 then 
 		inst.AnimState:SetBuild( "noelle" )
 	end
 end
