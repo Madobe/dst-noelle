@@ -120,7 +120,7 @@ end
 local master_postinit = function ( inst )
 	-- Basic changes
 	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
-	inst.soundsname = "willow"
+	inst.soundsname = "wendy"
 
 	inst.components.health:SetMaxHealth( TUNING.NOELLE_HEALTH )
 	inst.components.hunger:SetMax( TUNING.NOELLE_HUNGER )

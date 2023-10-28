@@ -56,11 +56,16 @@ STRINGS.CHARACTER_QUOTES.noelle = "\"Leave it to me!\""
 STRINGS.CHARACTER_SURVIVABILITY.noelle = "Slim"
 
 -- Custom speech strings
-STRINGS.CHARACTERS.noelle = require "speech_noelle"
+STRINGS.CHARACTERS.NOELLE = require "speech_noelle"
 
 -- The character's name as appears in-game
 STRINGS.NAMES.noelle = "Noelle"
 STRINGS.SKIN_NAMES.noelle_none = "Noelle"
+
+-- Name for Noelle's geo vision in-game
+STRINGS.NAMES.NOELLE_VISION = "Noelle's Vision"
+STRINGS.CHARACTERS.GENERIC.DESCRIBE.NOELLE_VISION = "A swirly rock."
+STRINGS.CHARACTERS.NOELLE.DESCRIBE.NOELLE_VISION = "My swirly rock!"
 
 -- The skins shown in the cycle view window on the character select screen.
 -- A good place to see what you can put in here is in skinutils.lua, in the function GetSkinModes

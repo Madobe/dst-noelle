@@ -34,7 +34,10 @@ local function fn ()
     end
 
     inst:AddComponent( "inspectable" )
+
     inst:AddComponent( "inventoryitem" )
+    inst.components.inventoryitem.imagename = "noelle_vision"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/noelle_vision.xml"
 
     MakeHauntableLaunch( inst )
 
