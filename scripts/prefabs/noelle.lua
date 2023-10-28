@@ -58,7 +58,7 @@ local function onlocomote ( inst )
 		return 
 	end
 
-	builds_by_dir = {
+	local builds_by_dir = {
 		[FACING_RIGHT] = "noelle",
 		[FACING_UP] = "noelle-1",
 		[FACING_LEFT] = "noelle-2",
