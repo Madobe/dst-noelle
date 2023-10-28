@@ -1,6 +1,7 @@
 PrefabFiles = {
 	"noelle",
 	"noelle_none",
+    "noelle_vision"
 }
 
 Assets = {
@@ -36,11 +37,10 @@ Assets = {
     Asset( "ATLAS", "images/names_gold_noelle.xml" ),
 
     -- Geo vision assets
-    -- ASSET( "ANIM", "anim/noelle_vision.zip" ),
-    -- ASSET( "ANIM", "anim/swap_noelle_vision.zip" ),
+    ASSET( "ANIM", "anim/noelle_vision.zip" ),
 
-    -- ASSET( "IMAGE", "images/inventoryimages/noelle_vision.tex" ),
-    -- Asset( "ATLAS", "images/inventoryimages/noelle_vision.xml" )
+    ASSET( "IMAGE", "images/inventoryimages/noelle_vision.tex" ),
+    Asset( "ATLAS", "images/inventoryimages/noelle_vision.xml" )
 }
 
 AddMinimapAtlas( "images/map_icons/noelle.xml" )
