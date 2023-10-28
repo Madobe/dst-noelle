@@ -37,9 +37,9 @@ Assets = {
     Asset( "ATLAS", "images/names_gold_noelle.xml" ),
 
     -- Geo vision assets
-    ASSET( "ANIM", "anim/noelle_vision.zip" ),
+    Asset( "ANIM", "anim/noelle_vision.zip" ),
 
-    ASSET( "IMAGE", "images/inventoryimages/noelle_vision.tex" ),
+    Asset( "IMAGE", "images/inventoryimages/noelle_vision.tex" ),
     Asset( "ATLAS", "images/inventoryimages/noelle_vision.xml" )
 }
 
