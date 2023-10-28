@@ -20,6 +20,12 @@ local function fn ()
 
     inst.pickupsound = "rock"
 
+    inst.Light:SetFalloff( 0.7 )
+    inst.Light:SetIntensity( 0.5 )
+    inst.Light:SetRadius( 0.5 )
+    inst.Light:SetColour( 237/255, 237/255, 209/255 )
+    inst.Light:Enable( true )
+
     inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
