@@ -56,12 +56,18 @@ local function onlocomote ( inst )
 		return 
 	end
 
-	-- Left = 2; right = 0
-	if inst.AnimState:GetCurrentFacing() == 2 then 
-		inst.AnimState:SetBuild( "noelle-1" )
-	elseif inst.AnimState:GetCurrentFacing() ~= 2 then 
-		inst.AnimState:SetBuild( "noelle" )
-	end
+	builds_by_dir = {
+		[FACING_RIGHT] = "noelle",
+		[FACING_UP] = "noelle-1",
+		[FACING_LEFT] = "noelle-2",
+		[FACING_DOWN] = "noelle-3",
+		[FACING_UPRIGHT] = "noelle-1",
+		[FACING_UPLEFT] = "noelle-1",
+		[FACING_DOWNRIGHT] = "noelle-3",
+		[FACING_DOWNLEFT] = "noelle-3"
+	}
+
+	inst.AnimState:SetBuild( builds_by_dir[inst.AnimState:GetCurrentFacing()] )
 end
 
 --- Hooks up any callbacks that need to be hooked up.
