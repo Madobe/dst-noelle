@@ -4,9 +4,9 @@
 
 ## Stats
 
-* Health: 150
+* Health: 200
 * Hunger: 150
-* Sanity: 200
+* Sanity: 150
 
 ## General Notes
 
