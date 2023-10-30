@@ -13,9 +13,9 @@ local assets = {
 ---------------------------------------------------------------------------------------------------
 
 -- Your character's stats
-TUNING.NOELLE_HEALTH = 150
+TUNING.NOELLE_HEALTH = 200
 TUNING.NOELLE_HUNGER = 150
-TUNING.NOELLE_SANITY = 200
+TUNING.NOELLE_SANITY = 150
 
 -- Custom starting inventory
 TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.noelle = {
@@ -59,14 +59,14 @@ local function onlocomote ( inst )
 	end
 
 	local builds_by_dir = {
-		[FACING_RIGHT] = "noelle",
+		[FACING_RIGHT] = "noelle-3",
 		[FACING_UP] = "noelle-1",
 		[FACING_LEFT] = "noelle-2",
-		[FACING_DOWN] = "noelle-3",
+		[FACING_DOWN] = "noelle",
 		[FACING_UPRIGHT] = "noelle-1",
 		[FACING_UPLEFT] = "noelle-1",
-		[FACING_DOWNRIGHT] = "noelle-3",
-		[FACING_DOWNLEFT] = "noelle-3"
+		[FACING_DOWNRIGHT] = "noelle",
+		[FACING_DOWNLEFT] = "noelle"
 	}
 
 	inst.AnimState:SetBuild( builds_by_dir[inst.AnimState:GetCurrentFacing()] )
@@ -120,7 +120,7 @@ end
 local master_postinit = function ( inst )
 	-- Basic changes
 	inst.starting_inventory = start_inv[TheNet:GetServerGameMode()] or start_inv.default
-	inst.soundsname = "wendy"
+	inst.soundsname = "winnie"
 
 	inst.components.health:SetMaxHealth( TUNING.NOELLE_HEALTH )
 	inst.components.hunger:SetMax( TUNING.NOELLE_HUNGER )

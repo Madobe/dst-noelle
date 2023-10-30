@@ -49,11 +49,11 @@ local require = GLOBAL.require
 local STRINGS = GLOBAL.STRINGS
 
 -- The character select screen lines
-STRINGS.CHARACTER_TITLES.noelle = "Parma Cordis"
+STRINGS.CHARACTER_TITLES.noelle = "The Maid-Knight"
 STRINGS.CHARACTER_NAMES.noelle = "Noelle"
-STRINGS.CHARACTER_DESCRIPTIONS.noelle = "*Armored Rose\n*Allogene\n*Perk 3"
+STRINGS.CHARACTER_DESCRIPTIONS.noelle = "*Is a maid.\n*In armor.\n*Also has a protective trinket of suspicious origin."
 STRINGS.CHARACTER_QUOTES.noelle = "\"Leave it to me!\""
-STRINGS.CHARACTER_SURVIVABILITY.noelle = "Slim"
+STRINGS.CHARACTER_SURVIVABILITY.noelle = "Unknown"
 
 -- Custom speech strings
 STRINGS.CHARACTERS.NOELLE = require "speech_noelle"
