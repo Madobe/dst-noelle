@@ -104,16 +104,18 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 -- @param act table: The action being performed.
 local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( act )
     local caster = act.doer
-    local target = act.target
-    local pos = act:GetActionPoint()
+    local inst = act.invobject
 
-    if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) and act.invobject.components.genshinvision:CanCast( caster, target, pos ) then
-		act.invobject.components.genshinvision:CastVision( caster, target, pos )
+    if inst ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) and not inst.inactive then
+		inst.components.genshinvision:CastVision( caster, act.target, act:GetActionPoint() )
         return true
 	end
 end )
 CAST_VISION.rmb = true
 CAST_VISION.mount_valid = true
+
+-- Mark this as a tool action
+GLOBAL.TOOLACTIONS.CAST_VISION = true
 
 --- Add the component action required for the vision's shield ability
 -- AddComponentAction( actiontype, component, fn )
