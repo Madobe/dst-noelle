@@ -46,7 +46,6 @@ Assets = {
 AddMinimapAtlas( "images/map_icons/noelle.xml" )
 
 local require = GLOBAL.require
-local ACTIONS = GLOBAL.ACTIONS
 local STRINGS = GLOBAL.STRINGS
 local TECH = GLOBAL.TECH
 
@@ -103,7 +102,7 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 --
 -- Function:
 -- @param act table: The action being performed.
-AddAction( "CAST_VISION", "Use Vision Ability", function ( act )
+local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( act )
     local caster = act.doer
 
     if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) then
@@ -111,8 +110,8 @@ AddAction( "CAST_VISION", "Use Vision Ability", function ( act )
         return true
 	end
 end )
-ACTIONS.CAST_VISION.rmb = true
-ACTIONS.CAST_VISION.mount_valid = true
+CAST_VISION.rmb = true
+CAST_VISION.mount_valid = true
 
 --- Add the component action required for the vision's shield ability
 -- AddComponentAction( actiontype, component, fn )
@@ -133,7 +132,7 @@ ACTIONS.CAST_VISION.mount_valid = true
 -- @param right boolean: Whether or not this was a right-click.
 AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions, right )
     if right and inst:HasTag( "vision_inactive" ) and doer:HasTag( "vision_user" ) then
-        table.insert( actions, ACTIONS.CAST_VISION )
+        table.insert( actions, CAST_VISION )
     end
 end )
 
@@ -145,7 +144,7 @@ end )
 -- @param inst table: The player character.
 -- @param action table: The action being handled.
 -- @returns string
-AddStategraphActionHandler( ACTIONS.CAST_VISION, function ( inst, action ) return "veryquickcastspell" end )
+AddStategraphActionHandler( CAST_VISION, function ( inst, action ) return "veryquickcastspell" end )
 
 -- Character-bound recipes
 AddCharacterRecipe( "noelle_vision", { Ingredient( "moonrock_nugget", 1 ) }, TECH.NONE, { builder_tag = "genshin_noelle" } )

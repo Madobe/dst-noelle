@@ -53,7 +53,7 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
     inst.pickupsound = "rock"
 	inst.scrapbook_deps = {}
 
-	MakeInventoryFloatable( inst, "small", 0.05, {1.2, 0.75, 1.2} )
+	MakeInventoryFloatable( inst, "small", 0.05, { 1.2, 0.75, 1.2 } )
 
 	inst:AddTag( "genshinvision" )
 	inst:AddTag( "cattoy" )
