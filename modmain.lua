@@ -104,9 +104,11 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 -- @param act table: The action being performed.
 local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( act )
     local caster = act.doer
+    local target = act.target
+    local pos = act:GetActionPoint()
 
-    if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) then
-		act.invobject.components.genshinvision:CastVision( caster, act.target, act:GetActionPoint() )
+    if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) and act.invobject.components.genshinvision:CanCast( caster, target, pos ) then
+		act.invobject.components.genshinvision:CastVision( caster, target, pos )
         return true
 	end
 end )

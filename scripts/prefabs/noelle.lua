@@ -96,6 +96,19 @@ local function onload ( inst )
 end
 
 ---------------------------------------------------------------------------------------------------
+-- Regular functions
+---------------------------------------------------------------------------------------------------
+
+--- This is used to force the right-click in the inventory to CAST_VISION instead of the usual
+--- LOOKAT action.
+-- @param inst table: The player.
+-- @param target table: The thing the player is hovering over.
+-- @param pos table: The position of the cursor.
+local function RightClickPicker ( inst, target, pos )
+    return target.owner and target.owner == inst and target:HasTag( "genshinvision" ) and ACTIONS.CAST_VISION
+end
+
+---------------------------------------------------------------------------------------------------
 -- Required functions
 ---------------------------------------------------------------------------------------------------
 
@@ -137,9 +150,9 @@ local master_postinit = function ( inst )
 
 	inst.components.combat.damagemultiplier = 1
 
-  -- Difficulty
-  inst.components.hunger.hungerrate = TUNING.WILSON_HUNGER_RATE * TUNING.NOELLE.DIFFICULTY_MULTIPLIER
-  inst.components.sanity.neg_aura_mult = TUNING.NOELLE.DIFFICULTY_MULTIPLIER
+    -- Difficulty
+    inst.components.hunger.hungerrate = TUNING.WILSON_HUNGER_RATE * TUNING.NOELLE.DIFFICULTY_MULTIPLIER
+    inst.components.sanity.neg_aura_mult = TUNING.NOELLE.DIFFICULTY_MULTIPLIER
 
 	inst.OnLoad = onload
 	inst.OnNewSpawn = onload
@@ -148,6 +161,11 @@ local master_postinit = function ( inst )
 	if TUNING.NOELLE.ARMORED_ROSE then
 		inst.components.combat.externaldamagetakenmultipliers:SetModifier( "armored_rose", 0.7 )
 	end
+
+    -- Override right-click action on the vision
+    if TUNING.NOELLE.NOELLE_VISION_ENABLED and inst.components.playeractionpicker ~= nil then
+        inst.components.playeractionpicker.rightclickoverride = RightClickPicker
+    end
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )

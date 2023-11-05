@@ -16,7 +16,6 @@ local GenshinVision = require "prefabs/vision_common"
 -- @param owner table: The player being attacked.
 -- @param data table: Data about the attack.
 local function onattacked ( owner, data )
-    TheNet:Announce( "Was attacked" )
 end
 
 ----------------------------------------------------------------------------------------------------
@@ -30,8 +29,11 @@ end
 -- @param target table: The target of the cast. This is a self-targeted spell so this won't be used.
 -- @param pos table: The indicated position by a player or brain. Unused in this spell.
 local function DoCastVision ( inst, doer, target, pos )
-    TheNet:Announce( "USED VISION" )
-    doer:ListenForEvent( "attacked", onattacked, doer )
+    doer._has_active_shield = true
+
+    if not doer._has_active_shield then
+        doer:ListenForEvent( "attacked", onattacked, doer )
+    end
 end
 
 local function fn ()
