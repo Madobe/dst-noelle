@@ -105,8 +105,10 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 -- @param act table: The action being performed.
 AddAction( "CAST_VISION", "Use", function ( act )
     local caster = act.doer
+
     if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) then
-		return act.invobject.components.genshinvision:CastSpell( caster, act.target, act:GetActionPoint() )
+		act.invobject.components.genshinvision:CastVision( caster, act.target, act:GetActionPoint() )
+        return true
 	end
 end )
 
@@ -133,4 +135,15 @@ AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions
     end
 end )
 
+--- The handler for the action defined with AddAction. This decides what the animation looks like.
+-- @param action table: The action to handle.
+-- @param fn function: The handler.
+--
+-- Function:
+-- @param inst table: The player character.
+-- @param action table: The action being handled.
+-- @returns string
+AddStategraphActionHandler( ACTIONS.CAST_VISION, function ( inst, action ) return "veryquickcastspell" end )
+
+-- Character-bound recipes
 AddCharacterRecipe( "noelle_vision", { Ingredient( "moonrock_nugget", 1 ) }, TECH.NONE, { builder_tag = "genshin_noelle" } )
