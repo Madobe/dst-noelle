@@ -46,6 +46,7 @@ Assets = {
 AddMinimapAtlas( "images/map_icons/noelle.xml" )
 
 local require = GLOBAL.require
+local ACTIONS = GLOBAL.ACTIONS
 local STRINGS = GLOBAL.STRINGS
 local TECH = GLOBAL.TECH
 
