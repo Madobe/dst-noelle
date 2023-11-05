@@ -111,11 +111,9 @@ local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( a
         return true
 	end
 end )
+CAST_VISION.priority = 7
 CAST_VISION.rmb = true
 CAST_VISION.mount_valid = true
-
--- Mark this as a tool action
-GLOBAL.TOOLACTIONS.CAST_VISION = true
 
 --- Add the component action required for the vision's shield ability
 -- AddComponentAction( actiontype, component, fn )

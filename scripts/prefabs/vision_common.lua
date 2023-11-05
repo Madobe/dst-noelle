@@ -57,7 +57,6 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 
 	inst:AddTag( "cattoy" )
 	inst:AddTag( "genshinvision" )
-    inst:AddTag( "tool" )
 
 	if tags ~= nil then
 		for _, tag in ipairs( tags ) do
@@ -74,9 +73,6 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 	if not TheWorld.ismastersim then
 			return inst
 	end
-
-    inst:AddComponent( "tool" )
-    inst.components.tool:SetAction( ACTIONS.CAST_VISION )
 
 	inst:AddComponent( "inspectable" )
 	inst.components.inspectable.getstatus = GetStatus
