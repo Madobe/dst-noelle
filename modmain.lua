@@ -1,7 +1,8 @@
 PrefabFiles = {
 	"noelle",
 	"noelle_none",
-    "noelle_vision"
+    "noelle_vision",
+    "vision_common"
 }
 
 Assets = {
@@ -104,7 +105,7 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 -- @param act table: The action being performed.
 AddAction( "CAST_VISION", "Use", function ( act )
     local caster = act.doer
-    if act.invobject ~= nil and caster ~= nil and caster:HasTag("pocketwatchcaster") then
+    if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) then
 		return act.invobject.components.genshinvision:CastSpell( caster, act.target, act:GetActionPoint() )
 	end
 end )

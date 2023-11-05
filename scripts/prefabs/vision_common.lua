@@ -29,7 +29,7 @@ local function GetStatus ( inst )
 			or nil
 end
 
-local function common_fn ( bank, build, DoCastSpell, tags, common_postinit, master_postinit )
+local function common_fn ( bank, build, DoCastVision, tags, common_postinit, master_postinit )
 	local inst = CreateEntity()
 
 	inst.entity:AddTransform()
@@ -76,7 +76,7 @@ local function common_fn ( bank, build, DoCastSpell, tags, common_postinit, mast
 	inst.components.rechargeable:SetOnChargedFn( OnCharged )
 
 	inst:AddComponent( "genshinvision" )
-	inst.components.genshinvision.DoCastSpell = DoCastSpell
+	inst.components.genshinvision.DoCastVision = DoCastVision
 
 	inst:AddComponent( "inspectable" )
 	inst.components.inspectable.getstatus = GetStatus

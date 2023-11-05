@@ -148,11 +148,6 @@ local master_postinit = function ( inst )
 	if TUNING.NOELLE.ARMORED_ROSE then
 		inst.components.combat.externaldamagetakenmultipliers:SetModifier( "armored_rose", 0.7 )
 	end
-
-	-- Shielding requirements
-	if TUNING.NOELLE.NOELLE_VISION_ENABLED then
-		inst:AddComponent( "genshinvision" )
-	end
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )
