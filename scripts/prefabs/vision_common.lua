@@ -10,15 +10,15 @@ local function OnDropped ( inst )
 end
 
 local function OnCharged ( inst )
-	if inst.components.usablevision ~= nil then
-		inst.components.usablevision.inactive = true
+	if inst.components.genshinvision ~= nil then
+		inst.components.genshinvision.inactive = true
 		inst.AnimState:PlayAnimation( "idle" )
 	end
 end
 
 local function OnDischarged ( inst )
-	if inst.components.usablevision ~= nil then
-		inst.components.usablevision.inactive = false
+	if inst.components.genshinvision ~= nil then
+		inst.components.genshinvision.inactive = false
 	end
 
 	OnDropped( inst )
@@ -29,7 +29,7 @@ local function GetStatus ( inst )
 			or nil
 end
 
-local function common_fn ( bank, build, DoCastSpell, cast_from_inventory, tags, common_postinit, master_postinit )
+local function common_fn ( bank, build, DoCastSpell, tags, common_postinit, master_postinit )
 	local inst = CreateEntity()
 
 	inst.entity:AddTransform()
@@ -47,7 +47,7 @@ local function common_fn ( bank, build, DoCastSpell, cast_from_inventory, tags, 
 
 	MakeInventoryFloatable( inst, "small", 0.05, {1.2, 0.75, 1.2} )
 
-	inst:AddTag( "usable_vision" )
+	inst:AddTag( "genshinvision" )
 	inst:AddTag( "cattoy" )
 
 	if tags ~= nil then
@@ -75,8 +75,8 @@ local function common_fn ( bank, build, DoCastSpell, cast_from_inventory, tags, 
 	inst.components.rechargeable:SetOnDischargedFn( OnDischarged )
 	inst.components.rechargeable:SetOnChargedFn( OnCharged )
 
-	inst:AddComponent( "usable_vision" )
-	inst.components.usablevision.DoCastSpell = DoCastSpell
+	inst:AddComponent( "genshinvision" )
+	inst.components.genshinvision.DoCastSpell = DoCastSpell
 
 	inst:AddComponent( "inspectable" )
 	inst.components.inspectable.getstatus = GetStatus

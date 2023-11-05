@@ -82,8 +82,13 @@ local skin_modes = {
 -- Technically a possible collision point if somebody uses the exact same tuning namespace
 GLOBAL.TUNING.NOELLE = {
     ARMORED_ROSE = GetModConfigData( "damage_reduction_enabled" ),
-    DIFFICULTY_MULTIPLIER = GetModConfigData( "difficulty_multiplier" )
+    DIFFICULTY_MULTIPLIER = GetModConfigData( "difficulty_multiplier" ),
+    NOELLE_VISION_ENABLED = GetModConfigData( "noelle_vision_enabled" )
 }
+
+----------------------------------------------------------------------------------------------------
+-- Methods to add assets to the game
+----------------------------------------------------------------------------------------------------
 
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter( "noelle", "FEMALE", skin_modes )
@@ -97,6 +102,10 @@ AddModCharacter( "noelle", "FEMALE", skin_modes )
 -- Function:
 -- @param act table: The action being performed.
 AddAction( "CAST_VISION", "Use", function ( act )
+    local caster = act.doer
+    if act.invobject ~= nil and caster ~= nil and caster:HasTag("pocketwatchcaster") then
+		return act.invobject.components.genshinvision:CastSpell( caster, act.target, act:GetActionPoint() )
+	end
 end )
 
 --- Add the component action required for the vision's shield ability
@@ -116,8 +125,10 @@ end )
 -- @param doer table: The player, or other entity invoking the component action.
 -- @param action table: A reference to the table of actions being performed.
 -- @param right boolean: Whether or not this was a right-click.
-AddComponentAction( "INVENTORY", "usablevision", function ( inst, doer, actions, right )
+AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions, right )
     if right and inst:HasTag( "vision_inactive" ) and doer:HasTag( "vision_user" ) then
         table.insert( actions, ACTIONS.CAST_VISION )
     end
 end )
+
+AddCharacterRecipe( "noelle_vision", { Ingredient( "moonrock_nugget", 1 ) }, TECH.NONE, { builder_tag = "genshin_noelle" } )

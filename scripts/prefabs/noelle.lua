@@ -25,6 +25,10 @@ TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.noelle = {
 	"twigs"
 }
 
+if TUNING.NOELLE.NOELLE_VISION_ENABLED then
+	table.insert( TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.noelle, "noelle_vision" )
+end
+
 local start_inv = {}
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 	start_inv[string.lower(k)] = v.noelle
@@ -108,7 +112,11 @@ local common_postinit = function ( inst )
 
 	-- Custom tags
 	inst:AddTag( "genshin" )
-	inst:AddTag( "vision_user" )
+	inst:AddTag( "genshin_noelle" )
+
+	if TUNING.NOELLE.NOELLE_VISION_ENABLED then
+		inst:AddTag( "vision_user" )
+	end
 end
 
 --- Server-side post-initialization.
@@ -136,8 +144,14 @@ local master_postinit = function ( inst )
 	inst.OnLoad = onload
 	inst.OnNewSpawn = onload
 
+	-- Perks
 	if TUNING.NOELLE.ARMORED_ROSE then
 		inst.components.combat.externaldamagetakenmultipliers:SetModifier( "armored_rose", 0.7 )
+	end
+
+	-- Shielding requirements
+	if TUNING.NOELLE.NOELLE_VISION_ENABLED then
+		inst:AddComponent( "genshinvision" )
 	end
 end
 

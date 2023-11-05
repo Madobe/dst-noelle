@@ -6,7 +6,7 @@ local prefabs = {
     "noelle_vision_fx"
 }
 
-local UsableVision = require "prefabs/vision_common"
+local GenshinVision = require "prefabs/vision_common"
 
 ----------------------------------------------------------------------------------------------------
 -- Callbacks
@@ -34,7 +34,7 @@ local function DoCastVision ( inst, doer, target, pos )
 end
 
 local function fn ()
-    local inst = UsableVision.common_fn( "noelle_vision", "noelle_vision", DoCastVision )
+    local inst = GenshinVision.common_fn( "noelle_vision", "noelle_vision", DoCastVision )
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
