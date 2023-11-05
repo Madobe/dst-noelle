@@ -1,8 +1,7 @@
 PrefabFiles = {
 	"noelle",
 	"noelle_none",
-    "noelle_vision",
-    "vision_common"
+    "noelle_vision"
 }
 
 Assets = {
