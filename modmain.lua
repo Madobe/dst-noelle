@@ -111,7 +111,7 @@ local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( a
         return true
 	end
 end )
-CAST_VISION.priority = 7
+CAST_VISION.priority = -1
 CAST_VISION.rmb = true
 CAST_VISION.mount_valid = true
 
@@ -131,9 +131,8 @@ CAST_VISION.mount_valid = true
 -- @param inst table: The item this is being invoked from. This is not the replica.
 -- @param doer table: The player, or other entity invoking the component action.
 -- @param action table: A reference to the table of actions being performed.
--- @param right boolean: Whether or not this was a right-click.
-AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions, right )
-    if right and inst:HasTag( "vision_inactive" ) and doer:HasTag( "vision_user" ) then
+AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions )
+    if inst:HasTag( "vision_inactive" ) and doer:HasTag( "vision_user" ) then
         table.insert( actions, CAST_VISION )
     end
 end )
