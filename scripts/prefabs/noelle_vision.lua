@@ -1,5 +1,7 @@
 local assets = {
     Asset( "ANIM", "anim/noelle_vision.zip" ),
+
+    Asset( "ANIM", "anim/forcefield.zip" )
 }
 
 local prefabs = {
@@ -21,6 +23,9 @@ end
 ----------------------------------------------------------------------------------------------------
 -- Regular functions
 ----------------------------------------------------------------------------------------------------
+
+local function CanCastVision( inst, doer )
+end
 
 --- Puts a "shield" on the user. This shield is actually just an internal check against the
 --- remaining shield HP on the vision.

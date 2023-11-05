@@ -74,7 +74,8 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 			return inst
 	end
 
-	inst:AddComponent( "lootdropper" )
+    inst:AddComponent( "tool" )
+    inst.components.tool:SetAction( ACTIONS.CAST_VISION )
 
 	inst:AddComponent( "inventoryitem" )
 	inst.components.inventoryitem:SetOnDroppedFn( OnDropped )

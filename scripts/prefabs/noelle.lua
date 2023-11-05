@@ -33,7 +33,7 @@ local start_inv = {}
 for k, v in pairs(TUNING.GAMEMODE_STARTING_ITEMS) do
 	start_inv[string.lower(k)] = v.noelle
 end
-local prefabs = FlattenTree(start_inv, true)
+local prefabs = FlattenTree( start_inv, true )
 
 ---------------------------------------------------------------------------------------------------
 -- Callbacks
@@ -96,21 +96,6 @@ local function onload ( inst )
 end
 
 ---------------------------------------------------------------------------------------------------
--- Regular functions
----------------------------------------------------------------------------------------------------
-
---- This is used to force the right-click in the inventory to CAST_VISION instead of the usual
---- LOOKAT action.
--- @param inst table: The player.
--- @param target table: The thing the player is hovering over.
--- @param pos table: The position of the cursor.
-local function RightClickPicker ( inst, target, pos )
-    if target.owner and target.owner == inst and target:HasTag( "genshinvision" ) then
-        return inst.components.playeractionpicker:SortActionList( { ACTIONS.CAST_VISION }, target, nil )
-    end
-end
-
----------------------------------------------------------------------------------------------------
 -- Required functions
 ---------------------------------------------------------------------------------------------------
 
@@ -163,11 +148,6 @@ local master_postinit = function ( inst )
 	if TUNING.NOELLE.ARMORED_ROSE then
 		inst.components.combat.externaldamagetakenmultipliers:SetModifier( "armored_rose", 0.7 )
 	end
-
-    -- Override right-click action on the vision
-    if TUNING.NOELLE.NOELLE_VISION_ENABLED and inst.components.playeractionpicker ~= nil then
-        inst.components.playeractionpicker.rightclickoverride = RightClickPicker
-    end
 end
 
 return MakePlayerCharacter( "noelle", prefabs, assets, common_postinit, master_postinit, prefabs )
