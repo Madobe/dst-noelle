@@ -87,3 +87,37 @@ GLOBAL.TUNING.NOELLE = {
 
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
 AddModCharacter( "noelle", "FEMALE", skin_modes )
+
+--- Add the action required for the vision's shield ability
+-- AddAction( id, str, fn )
+-- @param id string: The ID used internally to reference the action.
+-- @param str string: The string used when displaying hover text for the action.
+-- @param fn function: The function to execute when performing the action.
+--
+-- Function:
+-- @param act table: The action being performed.
+AddAction( "CAST_VISION", "Use", function ( act )
+end )
+
+--- Add the component action required for the vision's shield ability
+-- AddComponentAction( actiontype, component, fn )
+-- @param actiontype string: The type of action being added. This can be one of the following:
+-- SCENE		using an object in the world
+-- USEITEM		using an inventory item on an object in the world
+-- POINT		using an inventory item on a point in the world
+-- EQUIPPED		using an equiped item on yourself or a target object in the world
+-- INVENTORY	using an inventory item
+-- @see componentactions.lua
+-- @param component table: The component that this action originates from.
+-- @param fn function: The function to execute when performing the component action.
+--
+-- Function:
+-- @param inst table: The item this is being invoked from. This is not the replica.
+-- @param doer table: The player, or other entity invoking the component action.
+-- @param action table: A reference to the table of actions being performed.
+-- @param right boolean: Whether or not this was a right-click.
+AddComponentAction( "INVENTORY", "usablevision", function ( inst, doer, actions, right )
+    if right and inst:HasTag( "vision_inactive" ) and doer:HasTag( "vision_user" ) then
+        table.insert( actions, ACTIONS.CAST_VISION )
+    end
+end )

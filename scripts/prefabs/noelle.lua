@@ -108,6 +108,7 @@ local common_postinit = function ( inst )
 
 	-- Custom tags
 	inst:AddTag( "genshin" )
+	inst:AddTag( "vision_user" )
 end
 
 --- Server-side post-initialization.
