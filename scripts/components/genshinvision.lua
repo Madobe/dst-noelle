@@ -25,9 +25,9 @@ function GenshinVision:CanCast ( doer, target, pos )
   return self.inactive and ( self.CanCastFn == nil or self.CanCastFn( self.inst, doer, target, pos ) )
 end
 
-function GenshinVision:CastSpell ( doer, target, pos )
-  if self.DoCastSpell ~= nil and self.inactive then
-    local success, reason = self.DoCastSpell( self.inst, doer, target, pos )
+function GenshinVision:CastVision ( doer, target, pos )
+  if self.DoCastVision ~= nil and self.inactive then
+    local success, reason = self.DoCastVision( self.inst, doer, target, pos )
     return success, reason
   end
 
