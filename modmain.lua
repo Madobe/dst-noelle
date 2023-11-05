@@ -96,21 +96,18 @@ GLOBAL.TUNING.NOELLE = {
 AddModCharacter( "noelle", "FEMALE", skin_modes )
 
 --- Add the action required for the vision's shield ability
--- AddAction( id, str, fn )
--- @param id string: The ID used internally to reference the action.
--- @param str string: The string used when displaying hover text for the action.
--- @param fn function: The function to execute when performing the action.
---
--- Function:
--- @param act table: The action being performed.
-AddAction( "CAST_VISION", "Use", function ( act )
+-- We use an Action object instead of the AddAction( id, str, fn ) format because this allows us to
+-- specify more of the details.
+AddAction( Action( { priority = -1, rmb = true, mount_valid = true } ))
+ACTIONS.CAST_VISION.strfn = function ( act ) return "Use Vision Ability" end
+ACTIONS.CAST_VISION.fn = function ( act )
     local caster = act.doer
 
     if act.invobject ~= nil and caster ~= nil and caster:HasTag( "vision_user" ) then
 		act.invobject.components.genshinvision:CastVision( caster, act.target, act:GetActionPoint() )
         return true
 	end
-end )
+end
 
 --- Add the component action required for the vision's shield ability
 -- AddComponentAction( actiontype, component, fn )
