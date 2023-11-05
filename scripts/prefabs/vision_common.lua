@@ -36,13 +36,21 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 	inst.entity:AddAnimState()
 	inst.entity:AddSoundEmitter()
 	inst.entity:AddNetwork()
+	inst.entity:AddLight()
 
 	MakeInventoryPhysics( inst )
 
 	inst.AnimState:SetBank( bank )
 	inst.AnimState:SetBuild( build )
-	inst.AnimState:PlayAnimation("idle")
+	inst.AnimState:PlayAnimation( "idle" )
 
+    inst.Light:SetFalloff( 0.7 )
+    inst.Light:SetIntensity( 0.5 )
+    inst.Light:SetRadius( 0.1 )
+    inst.Light:SetColour( 255/255, 170/255, 0/255 )
+    inst.Light:Enable( true )
+
+    inst.pickupsound = "rock"
 	inst.scrapbook_deps = {}
 
 	MakeInventoryFloatable( inst, "small", 0.05, {1.2, 0.75, 1.2} )
@@ -70,6 +78,8 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 
 	inst:AddComponent( "inventoryitem" )
 	inst.components.inventoryitem:SetOnDroppedFn( OnDropped )
+    inst.components.inventoryitem.imagename = "noelle_vision"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/noelle_vision.xml"
 
 	inst:AddComponent( "rechargeable" )
 	inst.components.rechargeable:SetOnDischargedFn( OnDischarged )

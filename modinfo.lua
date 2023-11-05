@@ -26,40 +26,40 @@ icon = "modicon.tex"
 
 -- The mod's tags displayed on the server list
 server_filter_tags = {
-  "character",
-  "genshin"
+    "character",
+    "genshin"
 }
 
 configuration_options = {
-  {
-    default = 1.0,
-    hover = "Affects the rate of sanity and hunger drain for this character",
-    label = "Difficulty",
-    name = "difficulty_multiplier",
-    options = {
-      { description = "Casual", data = 0.5, hover = "50% less sanity and hunger drain" },
-      { description = "Default", data = 1.0, hover = "Normal sanity and hunger drain" },
-      { description = "Hardcore", data = 1.5, hover = "50% more sanity and hunger drain" }
+    {
+        default = 1.0,
+        hover = "Affects the rate of sanity and hunger drain for this character",
+        label = "Difficulty",
+        name = "difficulty_multiplier",
+        options = {
+        { description = "Casual", data = 0.5, hover = "50% less sanity and hunger drain" },
+        { description = "Default", data = 1.0, hover = "Normal sanity and hunger drain" },
+        { description = "Hardcore", data = 1.5, hover = "50% more sanity and hunger drain" }
+        }
+    },
+    {
+        default = true,
+        hover = "30% passive damage reduction",
+        label = "Armored Rose",
+        name = "damage_reduction_enabled",
+        options = {
+            { description = "Enable", data = true },
+            { description = "Disable", data = false }
+        }
+    },
+    {
+        default = true,
+        hover = "Noelle's Vision provides her shield perk",
+        label = "Noelle's Vision",
+        name = "noelle_vision_enabled",
+        options = {
+            { description = "Enable", data = true },
+            { description = "Disable", data = false }
+        }
     }
-  },
-  {
-    default = true,
-    hover = "30% passive damage reduction",
-    label = "Armored Rose",
-    name = "damage_reduction_enabled",
-    options = {
-      { description = "Enable", data = true },
-      { description = "Disable", data = false }
-    }
-  },
-  {
-    default = true,
-    hover = "Noelle's Vision provides her shield perk",
-    label = "Noelle's Vision",
-    name = "noelle_vision_enabled",
-    options = {
-      { description = "Enable", data = true },
-      { description = "Disable", data = false }
-    }
-  }
 }
