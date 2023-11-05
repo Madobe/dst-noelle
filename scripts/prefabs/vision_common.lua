@@ -53,10 +53,11 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
     inst.pickupsound = "rock"
 	inst.scrapbook_deps = {}
 
-	MakeInventoryFloatable( inst, "small", 0.05, { 1.2, 0.75, 1.2 } )
+	MakeInventoryFloatable( inst, "med", 0.05, { 0.75, 0.4, 0.75 } )
 
-	inst:AddTag( "genshinvision" )
 	inst:AddTag( "cattoy" )
+	inst:AddTag( "genshinvision" )
+    inst:AddTag( "tool" )
 
 	if tags ~= nil then
 		for _, tag in ipairs( tags ) do
@@ -77,6 +78,9 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
     inst:AddComponent( "tool" )
     inst.components.tool:SetAction( ACTIONS.CAST_VISION )
 
+	inst:AddComponent( "inspectable" )
+	inst.components.inspectable.getstatus = GetStatus
+
 	inst:AddComponent( "inventoryitem" )
 	inst.components.inventoryitem:SetOnDroppedFn( OnDropped )
     inst.components.inventoryitem.imagename = "noelle_vision"
@@ -88,9 +92,6 @@ local function common_fn ( bank, build, DoCastVision, tags, common_postinit, mas
 
 	inst:AddComponent( "genshinvision" )
 	inst.components.genshinvision.DoCastVision = DoCastVision
-
-	inst:AddComponent( "inspectable" )
-	inst.components.inspectable.getstatus = GetStatus
 
 	MakeHauntableLaunch( inst )
 
