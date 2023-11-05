@@ -105,7 +105,9 @@ end
 -- @param target table: The thing the player is hovering over.
 -- @param pos table: The position of the cursor.
 local function RightClickPicker ( inst, target, pos )
-    return target.owner and target.owner == inst and target:HasTag( "genshinvision" ) and ACTIONS.CAST_VISION
+    if target.owner and target.owner == inst and target:HasTag( "genshinvision" ) then
+        return inst.components.playeractionpicker:SortActionList( { ACTIONS.CAST_VISION }, target, nil )
+    end
 end
 
 ---------------------------------------------------------------------------------------------------
