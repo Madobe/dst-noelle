@@ -47,6 +47,7 @@ AddMinimapAtlas( "images/map_icons/noelle.xml" )
 
 local require = GLOBAL.require
 local STRINGS = GLOBAL.STRINGS
+local TECH = GLOBAL.TECH
 
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.noelle = "The Maid-Knight"
