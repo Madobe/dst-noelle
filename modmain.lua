@@ -110,6 +110,8 @@ local CAST_VISION = AddAction( "CAST_VISION", "Use Vision Ability", function ( a
         return true
 	end
 end )
+CAST_VISION.instant = true
+CAST_VISION.priority = -1
 CAST_VISION.rmb = true
 CAST_VISION.mount_valid = true
 
@@ -135,17 +137,6 @@ AddComponentAction( "INVENTORY", "genshinvision", function ( inst, doer, actions
         table.insert( actions, CAST_VISION )
     end
 end )
-
---- The handler for the action defined with AddAction. This decides what the animation looks like.
--- @param action table: The action to handle.
--- @param fn function: The handler.
---
--- Function:
--- @param inst table: The player character.
--- @param action table: The action being handled.
--- @returns string
-AddStategraphActionHandler( "wilson", GLOBAL.ActionHandler( CAST_VISION, "veryquickcastspell" ) )
-AddStategraphActionHandler( "wilson_client", GLOBAL.ActionHandler( CAST_VISION, "veryquickcastspell" ) )
 
 -- Character-bound recipes
 AddCharacterRecipe( "noelle_vision", { Ingredient( "moonrock_nugget", 1 ) }, TECH.NONE, { builder_tag = "genshin_noelle" } )
