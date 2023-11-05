@@ -144,7 +144,8 @@ end )
 -- @param inst table: The player character.
 -- @param action table: The action being handled.
 -- @returns string
-AddStategraphActionHandler( CAST_VISION, function ( inst, action ) return "veryquickcastspell" end )
+AddStategraphActionHandler( "wilson", GLOBAL.ActionHandler( CAST_VISION, "veryquickcastspell" ) )
+AddStategraphActionHandler( "wilson_client", GLOBAL.ActionHandler( CAST_VISION, "veryquickcastspell" ) )
 
 -- Character-bound recipes
 AddCharacterRecipe( "noelle_vision", { Ingredient( "moonrock_nugget", 1 ) }, TECH.NONE, { builder_tag = "genshin_noelle" } )
